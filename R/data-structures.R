@@ -522,7 +522,7 @@ new_cluster <- function(num_workers,
     enable_elastic_disk = enable_elastic_disk,
     driver_instance_pool_id = driver_instance_pool_id,
     instance_pool_id = instance_pool_id,
-    docker_image = NULL
+    docker_image = docker_image
   )
 
   if (is.aws_attributes(cloud_attrs)) {

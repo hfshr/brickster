@@ -501,7 +501,8 @@ new_cluster <- function(num_workers,
                         init_scripts = NULL,
                         enable_elastic_disk = TRUE,
                         driver_instance_pool_id = NULL,
-                        instance_pool_id = NULL) {
+                        instance_pool_id = NULL,
+                        docker_image = NULL) {
 
   # job_cluster_key is reserved for future use
   # TODO: detect if aws/azure/gcp by node_type_ids and see if there is a mismatch
@@ -520,7 +521,8 @@ new_cluster <- function(num_workers,
     spark_env_vars = spark_env_vars,
     enable_elastic_disk = enable_elastic_disk,
     driver_instance_pool_id = driver_instance_pool_id,
-    instance_pool_id = instance_pool_id
+    instance_pool_id = instance_pool_id,
+    docker_image = NULL
   )
 
   if (is.aws_attributes(cloud_attrs)) {
@@ -809,7 +811,6 @@ email_notifications <- function(on_start = NULL,
                                 on_success = NULL,
                                 on_failure = NULL,
                                 no_alert_for_skipped_runs = TRUE) {
-
   stopifnot(is.character(on_start))
   stopifnot(is.character(on_success))
   stopifnot(is.character(on_failure))
@@ -930,7 +931,6 @@ access_control_req_user <- function(user_name,
 
   class(obj) <- c("AccessControlRequestForUser", "list")
   obj
-
 }
 
 #' Test if object is of class AccessControlRequestForUser
@@ -966,7 +966,6 @@ access_control_req_group <- function(group,
 
   class(obj) <- c("AccessControlRequestForGroup", "list")
   obj
-
 }
 
 #' Test if object is of class AccessControlRequestForGroup
@@ -993,7 +992,6 @@ is.access_control_req_group <- function(x) {
 #' @export
 git_source <- function(git_url, git_provider, reference,
                        type = c("branch", "tag", "commit")) {
-
   providers <- c(
     "github",
     "bitbucketcloud",
@@ -1017,7 +1015,6 @@ git_source <- function(git_url, git_provider, reference,
 
   class(obj) <- c("GitSource", "list")
   obj
-
 }
 
 #' Test if object is of class GitSource
@@ -1349,4 +1346,3 @@ job_task <- function(task_key,
 is.job_task <- function(x) {
   inherits(x, "JobTaskSettings")
 }
-

@@ -19,7 +19,8 @@ new_cluster(
   init_scripts = NULL,
   enable_elastic_disk = TRUE,
   driver_instance_pool_id = NULL,
-  instance_pool_id = NULL
+  instance_pool_id = NULL,
+  docker_image = NULL
 )
 }
 \arguments{
@@ -80,6 +81,8 @@ driver node. You must also specify \code{instance_pool_id}. Optional.}
 \code{driver_instance_pool_id} is present, \code{instance_pool_id} is used for worker
 nodes only. Otherwise, it is used for both the driver and worker nodes.
 Optional.}
+
+\item{docker_image}{Instance of \code{\link[=docker_image]{docker_image()}}.}
 }
 \description{
 New Cluster
